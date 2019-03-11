@@ -4,7 +4,7 @@ using UnityEngine;
 
 [ExecuteInEditMode] // <-- execute in edit mode yeee
 [SelectionBase] // makes selecting top quad of cube easier, this prevents me from clicking other quads.
-[RequireComponent(typeof(WayPoints))]
+[RequireComponent(typeof(WayPoint))]
 public class CubeEditor : MonoBehaviour {
 
 	const int gridSize = 10;
@@ -14,11 +14,11 @@ public class CubeEditor : MonoBehaviour {
 
 	// TextMesh textMesh;
 	//Vector3 gridPosition;
-	WayPoints waypoints; // waypoints = Waypoints  <--- script
+	WayPoint waypoint; // waypoint = Waypoint  <--- script
 
 	void Start()
 	{
-	  waypoints = GetComponent<WayPoints>();
+	  waypoint = GetComponent<WayPoint>();
 	}
 
 	void Update () 
@@ -29,15 +29,15 @@ public class CubeEditor : MonoBehaviour {
 	
 	private void SnapToGrid()
 		{
-		int gridSize = waypoints.GetGridSize(); // calling GetGridSize from waypoint script.
-		transform.position = new Vector3(waypoints.GetGridPosition().x, 0f , waypoints.GetGridPosition().y); 
+		int gridSize = waypoint.GetGridSize(); // calling GetGridSize from waypoint script.
+		transform.position = new Vector3(waypoint.GetGridPosition().x, 0f , waypoint.GetGridPosition().y); 
 		}
 		
 	private void UpdateLabel()
 		{
 	    TextMesh textMesh = GetComponentInChildren<TextMesh>(); // same as Textmesh textmesh on line 15.
-		int gridSize = waypoints.GetGridSize();
-		string textLabel =  waypoints.GetGridPosition().x / gridSize + "," + waypoints.GetGridPosition().y / gridSize; // text changes according to position of cube
+		int gridSize = waypoint.GetGridSize();
+		string textLabel =  waypoint.GetGridPosition().x / gridSize + "," + waypoint.GetGridPosition().y / gridSize; // text changes according to position of cube
 		textMesh.text = textLabel;
 		gameObject.name = textLabel;
 		}

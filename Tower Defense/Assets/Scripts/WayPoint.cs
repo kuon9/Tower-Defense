@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WayPoints : MonoBehaviour {
+public class WayPoint : MonoBehaviour {
 
 	Vector2Int gridPos;
 	
@@ -13,7 +13,7 @@ public class WayPoints : MonoBehaviour {
 		return gridSize;
 	}
 
-	public Vector2 GetGridPosition()
+	public Vector2Int GetGridPosition()
 	{
 		return new Vector2Int(
 		  Mathf.RoundToInt (transform.position.x / gridSize) * gridSize, // transform.position.x is the x position of cube.

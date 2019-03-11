@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
-	[SerializeField] List<WayPoints> path;
+	[SerializeField] List<WayPoint> path;
 
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(FollowPath());
+	//	StartCoroutine(FollowPath());
 	}
 	
 	IEnumerator FollowPath()
 	{
 		print("Starting Patrol");
-		foreach (WayPoints waypoint in path) // Block becomes waypoint
+		foreach (WayPoint waypoint in path) // Block becomes waypoint
 		{
 			transform.position = waypoint.transform.position;
 			print("Visiting" + waypoint);	
