@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 23823405778425202}
   - component: {fileID: 64572984865885314}
   m_Layer: 0
-  m_Name: TOP
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,8 +240,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1268031310971352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 10, y: 0, z: 10}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children:
   - {fileID: 4328631576995742}
   - {fileID: 4462716089744470}
@@ -678,7 +678,7 @@ TextMesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662062660403574}
-  m_Text: 0,0
+  m_Text: 1,1
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -714,4 +714,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dcb525a825994b419d7a22662dec822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 1.1

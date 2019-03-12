@@ -6,17 +6,19 @@ using UnityEngine;
 [SelectionBase] // makes selecting top quad of cube easier, this prevents me from clicking other quads.
 [RequireComponent(typeof(WayPoint))]
 public class CubeEditor : MonoBehaviour {
-
-	const int gridSize = 10;
-	
 	/*This line of code is getting refactored *////[SerializeField] [Range(1f, 20f)] float gridSize = 10f; // range allows a dragging function from 1 to 20.
 	// you can also manually punch in the number into the float rather than use range also.
-
 	// TextMesh textMesh;
 	//Vector3 gridPosition;
-	WayPoint waypoint; // waypoint = Waypoint  <--- script
+	
 
-	void Start()
+ 	
+	WayPoint waypoint; // waypoint = Waypoint  <--- script
+	const int gridSize = 10;
+	
+	
+	
+	void Awake()
 	{
 	  waypoint = GetComponent<WayPoint>();
 	}
