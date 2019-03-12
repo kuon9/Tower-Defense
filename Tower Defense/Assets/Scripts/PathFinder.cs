@@ -8,7 +8,9 @@ public class PathFinder : MonoBehaviour {
 
 	[SerializeField] WayPoint  startWaypoint, endWaypoint; // two gameobject tabs in inspector, this allows me to drag which cube i want to be start and end.
 	Dictionary<Vector2Int, WayPoint> grid = new Dictionary<Vector2Int, WayPoint>();
-	
+	Queue<WayPoint> queue = new Queue<WayPoint>();
+	[SerializeField]bool isRunning = true; // to make private
+
 	Vector2Int[] directions = 
 	{
 		Vector2Int.up,
@@ -21,9 +23,32 @@ public class PathFinder : MonoBehaviour {
 	void Start () {
 		LoadCubes();
 		ColorStartAndEnd();
-		ExploreNeighbours();
+		PathFind();
+		//ExploreNeighbours();
+	
 	}
 
+	private void PathFind()
+	{
+		queue.Enqueue(startWaypoint); // adds to end of the queue.
+
+		while(queue.Count > 0)
+		{
+			var searchCenter = 	queue.Dequeue(); // return to front of the queue.
+			print("Searching from: " + searchCenter); // todo remove log.
+			HaltIfEndFound(searchCenter);
+		}
+		print("Finished pathfinding?");
+	}
+
+	private void HaltIfEndFound(WayPoint searchCenter)
+	{
+		 if(searchCenter == endWaypoint)
+		 {
+			print("Searching from end node, therefore stopping");
+		 	isRunning = false;
+		 }
+	}
 
 	private void ExploreNeighbours()
 	{	

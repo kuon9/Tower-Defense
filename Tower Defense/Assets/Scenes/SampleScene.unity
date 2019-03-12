@@ -190,6 +190,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &204769534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114383179884233782, guid: 336cdd5e164fd35439851ec1e5912da9,
+    type: 2}
+  m_PrefabInternal: {fileID: 739845672}
+  m_Script: {fileID: 11500000, guid: ed3a003d9f26417439fefb6bd84ac3c1, type: 3}
 --- !u!1 &321119674
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &321119675
 Transform:
   m_ObjectHideFlags: 0
@@ -423,28 +429,6 @@ Prefab:
     - target: {fileID: 1268031310971352, guid: 336cdd5e164fd35439851ec1e5912da9, type: 2}
       propertyPath: m_Name
       value: 1,1
-      objectReference: {fileID: 0}
-    - target: {fileID: 102070693545754826, guid: 336cdd5e164fd35439851ec1e5912da9,
-        type: 2}
-      propertyPath: m_Text
-      value: 1,1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114439732684156752, guid: 336cdd5e164fd35439851ec1e5912da9,
-        type: 2}
-      propertyPath: gridSize
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931813583774118, guid: 336cdd5e164fd35439851ec1e5912da9, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931813583774118, guid: 336cdd5e164fd35439851ec1e5912da9, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4931813583774118, guid: 336cdd5e164fd35439851ec1e5912da9, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 336cdd5e164fd35439851ec1e5912da9, type: 2}
@@ -1160,6 +1144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24496e98dd37b1c42b5cd33b3d54183e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startWaypoint: {fileID: 1447613169}
+  endWaypoint: {fileID: 204769534}
 --- !u!1001 &1341767006
 Prefab:
   m_ObjectHideFlags: 0
@@ -1228,6 +1214,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 336cdd5e164fd35439851ec1e5912da9, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1447613169 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114383179884233782, guid: 336cdd5e164fd35439851ec1e5912da9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1691036357}
+  m_Script: {fileID: 11500000, guid: ed3a003d9f26417439fefb6bd84ac3c1, type: 3}
 --- !u!4 &1574701156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4931813583774118, guid: 336cdd5e164fd35439851ec1e5912da9,
