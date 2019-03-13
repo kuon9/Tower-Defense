@@ -9,7 +9,8 @@ public class PathFinder : MonoBehaviour {
 	[SerializeField] WayPoint  startWaypoint, endWaypoint; // two gameobject tabs in inspector, this allows me to drag which cube i want to be start and end.
 	Dictionary<Vector2Int, WayPoint> grid = new Dictionary<Vector2Int, WayPoint>();
 	Queue<WayPoint> queue = new Queue<WayPoint>();
-	[SerializeField]bool isRunning = true; // to make private
+	bool isRunning = true; // to make private
+	WayPoint searchCenter; // the current searchCenter
 
 	Vector2Int[] directions = 
 	{
@@ -34,16 +35,15 @@ public class PathFinder : MonoBehaviour {
 
 		while(queue.Count > 0 && isRunning)
 		{
-			var searchCenter = 	queue.Dequeue(); // return to front of the queue.
-			print("Searching from: " + searchCenter); // todo remove log.
-			HaltIfEndFound(searchCenter);
-			ExploreNeighbours(searchCenter);
+		    searchCenter = 	queue.Dequeue(); // return to front of the queue.
+			HaltIfEndFound();
+			ExploreNeighbours();
 			searchCenter.isExplored = true;
 		}
 		print("Finished pathfinding?");
 	}
 
-	private void HaltIfEndFound(WayPoint searchCenter)
+	private void HaltIfEndFound()
 	{
 		 if(searchCenter == endWaypoint)
 		 {
@@ -52,13 +52,13 @@ public class PathFinder : MonoBehaviour {
 		 }
 	}
 
-	private void ExploreNeighbours(WayPoint from)
+	private void ExploreNeighbours ()
 	{	
 		if(!isRunning) { return; }
 		
 		foreach(Vector2Int direction in directions)
 		{
-			Vector2Int neighborCoordinates = from.GetGridPosition() + direction;
+			Vector2Int neighborCoordinates = searchCenter.GetGridPosition() + direction;
 			try // trys executing this and if there's a problem,
 			// then it will do whatever we well it to do with catch
 			{
@@ -74,7 +74,7 @@ public class PathFinder : MonoBehaviour {
 	private void QueueNewNeighbours(Vector2Int neighborCoordinates)
 	{		
 		WayPoint neighbour = grid[neighborCoordinates]; // WayPoint becomes neighbour and it equals grid[neighborcoordinates] yeee.
-		if(neighbour.isExplored) // don't queue 0,0 because we're marking it as explored.
+		if(neighbour.isExplored || queue.Contains(neighbour)) // don't queue 0,0 because we're marking it as explored.
 		{
 			// do nothing
 		}

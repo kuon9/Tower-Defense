@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour {
 
-public bool isExplored = false;
+//public ok here is a data class.
+	
+	
+	[SerializeField] Color exploredColor;
+	
+	public bool isExplored = false;
+	public WayPoint exploredFrom; // keep track in which waypoint is found from.
 
-	Vector2Int gridPos;
+	Vector2Int gridPosition;
 	
 	const int gridSize = 10;
 
