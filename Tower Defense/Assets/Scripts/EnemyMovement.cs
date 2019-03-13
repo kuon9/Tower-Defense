@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
-	[SerializeField] List<WayPoint> path;
 
 
 	// Use this for initialization
-	void Start () {
-	//	StartCoroutine(FollowPath());
+	void Start () 
+	{
+	    PathFinder pathfinder = FindObjectOfType<PathFinder>();
+		var path = pathfinder.GetPath(); // var saves us a lot of time because we use it to define long ass words yee
+		StartCoroutine(FollowPath(path));
 	}
 	
-	IEnumerator FollowPath()
+	IEnumerator FollowPath(List<WayPoint> path)
 	{
 		print("Starting Patrol");
 		foreach (WayPoint waypoint in path) // Block becomes waypoint
 		{
-			transform.position = waypoint.transform.position;
-			print("Visiting" + waypoint);	
+			transform.position = waypoint.transform.position;	
 			yield return new WaitForSeconds(1f);
 		}
 			print("Ending Patrol");

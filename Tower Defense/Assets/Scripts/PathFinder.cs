@@ -11,6 +11,9 @@ public class PathFinder : MonoBehaviour {
 	Queue<WayPoint> queue = new Queue<WayPoint>();
 	bool isRunning = true; // to make private
 	WayPoint searchCenter; // the current searchCenter
+    List<WayPoint> path = new List<WayPoint>(); // todo make private
+
+
 
 	Vector2Int[] directions = 
 	{
@@ -20,16 +23,33 @@ public class PathFinder : MonoBehaviour {
 		Vector2Int.left
 	}; 
 
-	// Use this for initialization
-	void Start () {
+	public List<WayPoint> GetPath()
+	{
 		LoadCubes();
 		ColorStartAndEnd();
-		PathFind();
-		//ExploreNeighbours();
-	
+		BreadthFirstSearch();
+		CreatePath();
+		return path;
 	}
 
-	private void PathFind()
+	private void CreatePath()
+	{
+		path.Add(endWaypoint);
+
+		WayPoint previous = endWaypoint.exploredFrom;
+		while (previous != startWaypoint)
+		{
+			path.Add(previous);
+			//add intermediate waypoints
+			previous = previous.exploredFrom;
+		}
+			path.Add(startWaypoint);
+			// add start waypoint
+			path.Reverse();
+			//reverse the list
+	}
+
+	private void BreadthFirstSearch()
 	{
 		queue.Enqueue(startWaypoint); // adds to end of the queue.
 
@@ -40,7 +60,7 @@ public class PathFinder : MonoBehaviour {
 			ExploreNeighbours();
 			searchCenter.isExplored = true;
 		}
-		print("Finished pathfinding?");
+		print("Finished BreadthFirstSearching?");
 	}
 
 	private void HaltIfEndFound()
@@ -59,15 +79,11 @@ public class PathFinder : MonoBehaviour {
 		foreach(Vector2Int direction in directions)
 		{
 			Vector2Int neighborCoordinates = searchCenter.GetGridPosition() + direction;
-			try // trys executing this and if there's a problem,
-			// then it will do whatever we well it to do with catch
+			if(grid.ContainsKey(neighborCoordinates))
 			{
 				QueueNewNeighbours(neighborCoordinates);
 			}
-			catch
-			{
-				// do nothing
-			}
+
 		}
 	}
 
@@ -90,6 +106,7 @@ public class PathFinder : MonoBehaviour {
 
 	private void ColorStartAndEnd()
 	{
+		// todo consider moving out.
 		startWaypoint.SetTopColor(Color.red); // calling SetTopColor method from WAyPoint script.
 		endWaypoint.SetTopColor(Color.blue);
 	}
