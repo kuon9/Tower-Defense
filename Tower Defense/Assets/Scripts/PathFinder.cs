@@ -32,11 +32,13 @@ public class PathFinder : MonoBehaviour {
 	{
 		queue.Enqueue(startWaypoint); // adds to end of the queue.
 
-		while(queue.Count > 0)
+		while(queue.Count > 0 && isRunning)
 		{
 			var searchCenter = 	queue.Dequeue(); // return to front of the queue.
 			print("Searching from: " + searchCenter); // todo remove log.
 			HaltIfEndFound(searchCenter);
+			ExploreNeighbours(searchCenter);
+			searchCenter.isExplored = true;
 		}
 		print("Finished pathfinding?");
 	}
@@ -50,15 +52,17 @@ public class PathFinder : MonoBehaviour {
 		 }
 	}
 
-	private void ExploreNeighbours()
+	private void ExploreNeighbours(WayPoint from)
 	{	
+		if(!isRunning) { return; }
+		
 		foreach(Vector2Int direction in directions)
 		{
-			Vector2Int explorationCoordinates = startWaypoint.GetGridPosition() + direction;
+			Vector2Int neighborCoordinates = from.GetGridPosition() + direction;
 			try // trys executing this and if there's a problem,
 			// then it will do whatever we well it to do with catch
 			{
-			grid[explorationCoordinates].SetTopColor(Color.black);// sets the area we're exploring into black.
+				QueueNewNeighbours(neighborCoordinates);
 			}
 			catch
 			{
@@ -66,6 +70,23 @@ public class PathFinder : MonoBehaviour {
 			}
 		}
 	}
+
+	private void QueueNewNeighbours(Vector2Int neighborCoordinates)
+	{		
+		WayPoint neighbour = grid[neighborCoordinates]; // WayPoint becomes neighbour and it equals grid[neighborcoordinates] yeee.
+		if(neighbour.isExplored) // don't queue 0,0 because we're marking it as explored.
+		{
+			// do nothing
+		}
+		else
+		{
+		neighbour.SetTopColor(Color.black);// sets the area we're exploring into black.
+		queue.Enqueue(neighbour);
+		print("Queueing" + neighbour);
+		}
+	}
+
+
 
 	private void ColorStartAndEnd()
 	{
