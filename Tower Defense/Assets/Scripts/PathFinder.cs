@@ -49,7 +49,7 @@ public class PathFinder : MonoBehaviour {
 			//reverse the list
 	}
 
-	private void BreadthFirstSearch()
+	private void BreadthFirstSearch() // simple and efficient most of the time. One of the three search formulas
 	{
 		queue.Enqueue(startWaypoint); // adds to end of the queue.
 
