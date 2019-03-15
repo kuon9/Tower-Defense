@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -83,7 +84,6 @@ public class PathFinder : MonoBehaviour {
 			{
 				QueueNewNeighbours(neighborCoordinates);
 			}
-
 		}
 	}
 
@@ -96,13 +96,12 @@ public class PathFinder : MonoBehaviour {
 		}
 		else
 		{
-		neighbour.SetTopColor(Color.black);// sets the area we're exploring into black.
+		//neighbour.SetTopColor(Color.black);// sets the area we're exploring into black.
 		queue.Enqueue(neighbour);
+		neighbour.exploredFrom = searchCenter;
 		print("Queueing" + neighbour);
 		}
 	}
-
-
 
 	private void ColorStartAndEnd()
 	{
