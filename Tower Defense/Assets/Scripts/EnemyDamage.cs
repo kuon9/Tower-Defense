@@ -17,7 +17,7 @@ public class EnemyDamage : MonoBehaviour {
 /// <param name="other">The GameObject hit by the particle.</param>
 	
 	
-	private	void OnParticleCollision(GameObject other)
+	private	void OnParticleCollision(GameObject other) // particle hitting the gameobject.
 		{
 			ProcessHit(); // this activates when the particle collide with the gameobject.
 			if(Health <= 0)
