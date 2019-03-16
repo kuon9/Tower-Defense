@@ -26,12 +26,21 @@ public class PathFinder : MonoBehaviour {
 
 	public List<WayPoint> GetPath()
 	{
-		LoadCubes();
-		ColorStartAndEnd();
-		BreadthFirstSearch();
-		CreatePath();
-		return path;
+		if(path.Count == 0)
+			{
+				CalculatePath();
+			}
+				return path;
 	}
+
+	private void CalculatePath()
+	{
+			LoadCubes();
+			ColorStartAndEnd();
+			BreadthFirstSearch();
+			CreatePath();
+	}
+	
 
 	private void CreatePath()
 	{
@@ -99,7 +108,7 @@ public class PathFinder : MonoBehaviour {
 		//neighbour.SetTopColor(Color.black);// sets the area we're exploring into black.
 		queue.Enqueue(neighbour);
 		neighbour.exploredFrom = searchCenter;
-		print("Queueing" + neighbour);
+		//print("Queueing" + neighbour);
 		}
 	}
 
