@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33507784773950484}
   - component: {fileID: 23083945531967874}
   - component: {fileID: 95643036714700164}
+  - component: {fileID: 114051568747137820}
   m_Layer: 0
   m_Name: Laser Tower Lvl 3
   m_TagString: Untagged
@@ -57,7 +58,6 @@ GameObject:
   - component: {fileID: 33875590531498254}
   - component: {fileID: 23781097038997538}
   - component: {fileID: 95409393828840934}
-  - component: {fileID: 114330771954327942}
   m_Layer: 0
   m_Name: LaserTower_TURRET_L03
   m_TagString: Untagged
@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1234376159510558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.66, y: -0.5999999, z: -19.74}
+  m_LocalPosition: {x: 20.09, y: -0.91, z: -19.74}
   m_LocalScale: {x: 2.2537498, y: 2.2537498, z: 2.2537498}
   m_Children:
   - {fileID: 4187594985292332}
@@ -215,7 +215,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1234376159510558}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: d5fce1ef7f53e4b6384af86a686e95c9, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -226,20 +226,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114330771954327942
+--- !u!114 &114051568747137820
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1673919882250594}
+  m_GameObject: {fileID: 1234376159510558}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8655bebb9427914b818e256e18ccb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Unit: {fileID: 4187594985292332}
-  targetEnemy: {fileID: 0}
-  AttackRange: 10
+  AttackRange: 50
   projectileParticle: {fileID: 198527509373745356}
 --- !u!198 &198527509373745356
 ParticleSystem:

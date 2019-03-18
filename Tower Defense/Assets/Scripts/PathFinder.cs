@@ -36,7 +36,7 @@ public class PathFinder : MonoBehaviour {
 	private void CalculatePath()
 	{
 			LoadCubes();
-			ColorStartAndEnd();
+			//ColorStartAndEnd();
 			BreadthFirstSearch();
 			CreatePath();
 	}
@@ -112,12 +112,12 @@ public class PathFinder : MonoBehaviour {
 		}
 	}
 
-	private void ColorStartAndEnd()
-	{
-		// todo consider moving out.
-		startWaypoint.SetTopColor(Color.red); // calling SetTopColor method from WAyPoint script.
-		endWaypoint.SetTopColor(Color.blue);
-	}
+	// private void ColorStartAndEnd()
+	// {
+	// 	// todo consider moving out.
+	// 	startWaypoint.SetTopColor(Color.red); // calling SetTopColor method from WAyPoint script.
+	// 	endWaypoint.SetTopColor(Color.blue);
+	// }
 
 	private void LoadCubes()
 	{

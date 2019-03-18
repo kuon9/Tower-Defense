@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour {
 
 	[SerializeField] Collider collisionMesh;
-	[SerializeField] int Health = 10; // can be float too.
+	[SerializeField] int Health = 6; // can be float too.
 
 
 	// Use this for initialization
@@ -28,7 +28,7 @@ public class EnemyDamage : MonoBehaviour {
 	void ProcessHit()
 		{
 			Health = Health - 1;
-		//	print("current hitpoints are " + Health);
+			print("current hitpoints are " + Health);
 	
 		}
  	private void KillEnemy()

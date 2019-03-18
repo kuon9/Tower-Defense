@@ -21,6 +21,12 @@ public class WayPoint : MonoBehaviour {
 		return gridSize;
 	}
 
+	void Start()
+	{
+		Physics.queriesHitTriggers = true;
+	}
+
+
 	public Vector2Int GetGridPosition()
 	{
 		return new Vector2Int(
@@ -29,9 +35,16 @@ public class WayPoint : MonoBehaviour {
 		);	
 	}
 
-	public void SetTopColor(Color color) // this is a method. (Color = type, color is variable)
+	/// <summary>
+	/// Called every frame while the mouse is over the GUIElement or Collider.
+	/// </summary>
+	void OnMouseOver() // whatever my mouse is over a gameobject with a box collider, i will execute the print (gameobject.name).
 	{
-	   MeshRenderer topMeshRenderer= transform.Find("Top").GetComponent<MeshRenderer>();
-	   topMeshRenderer.material.color = color; // color = albedo in inspector tab.
-	} 
+		print(gameObject.name);
+	}
+				// public void SetTopColor(Color color) // this is a method. (Color = type, color is variable)
+				// {
+				//    MeshRenderer topMeshRenderer= transform.Find("Top").GetComponent<MeshRenderer>();
+				//    topMeshRenderer.material.color = color; // color = albedo in inspector tab.
+				//	{ 
 } // end of class
