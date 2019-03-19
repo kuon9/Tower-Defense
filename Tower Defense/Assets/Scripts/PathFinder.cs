@@ -44,19 +44,22 @@ public class PathFinder : MonoBehaviour {
 
 	private void CreatePath()
 	{
-		path.Add(endWaypoint);
+		SetAsPath(endWaypoint);
 
 		WayPoint previous = endWaypoint.exploredFrom;
 		while (previous != startWaypoint)
 		{
-			path.Add(previous);
-			//add intermediate waypoints
 			previous = previous.exploredFrom;
+			SetAsPath(previous);
 		}
-			path.Add(startWaypoint);
-			// add start waypoint
+			SetAsPath(startWaypoint);
 			path.Reverse();
-			//reverse the list
+	}
+
+	private void SetAsPath (WayPoint waypoint)
+	{
+		path.Add(waypoint);
+		waypoint.isAvailable = false;
 	}
 
 	private void BreadthFirstSearch() // simple and efficient most of the time. One of the three search formulas
