@@ -363,3 +363,5 @@ MonoBehaviour:
   exploredColor: {r: 0.03773582, g: 0.034353837, b: 0.034353837, a: 0}
   isExplored: 0
   exploredFrom: {fileID: 0}
+  isAvailable: 1
+  towerprefab: {fileID: 0}

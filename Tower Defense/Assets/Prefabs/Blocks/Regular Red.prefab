@@ -353,6 +353,7 @@ MonoBehaviour:
   isExplored: 0
   exploredFrom: {fileID: 0}
   isAvailable: 1
+  towerprefab: {fileID: 0}
 --- !u!114 &114958130488272310
 MonoBehaviour:
   m_ObjectHideFlags: 1

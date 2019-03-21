@@ -13,9 +13,12 @@ public class WayPoint : MonoBehaviour {
 	public WayPoint exploredFrom; // keep track in which waypoint is found from.
 	public bool isAvailable = true; // public boolean dictating if there's space for a box to be placed in.
 
+	[SerializeField] Tower towerprefab;
+
 	Vector2Int gridPosition;
 	
 	const int gridSize = 10;
+	const string towerParentname = "Towers";
 
 	public int GetGridSize()
 	{
@@ -47,7 +50,10 @@ public class WayPoint : MonoBehaviour {
 			if(isAvailable)
 			// Simply also "filter" for the block being placeable.
 			{
-			print(gameObject.name + " clicked"); // You can add a space in " ".
+			
+			Instantiate(towerprefab, transform.position, Quaternion.identity); // Quaternion.identity means none.
+			isAvailable = false;
+			//(gameObject.name + " clicked"); // You can add a space in " ".
 			// if clicked
 			}
 			else

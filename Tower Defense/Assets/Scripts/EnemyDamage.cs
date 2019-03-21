@@ -6,6 +6,8 @@ public class EnemyDamage : MonoBehaviour {
 
 	[SerializeField] Collider collisionMesh;
 	[SerializeField] int Health = 6; // can be float too.
+	[SerializeField] ParticleSystem hitParticlePrefab;
+	[SerializeField] ParticleSystem DeathParticlePrefab;
 
 
 	// Use this for initialization
@@ -29,10 +31,13 @@ public class EnemyDamage : MonoBehaviour {
 		{
 			Health = Health - 1;
 			print("current hitpoints are " + Health);
+			hitParticlePrefab.Play(); // this plays our particle system when process hit triggers.
 	
 		}
  	private void KillEnemy()
 		{
+			var BlowUp = Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity); // makes the particle prefab appear on at the gameobject transform.position.
+			BlowUp.Play();
 			Destroy(gameObject);
 		}
 } // end of class.
