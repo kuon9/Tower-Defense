@@ -30,7 +30,7 @@ public class TowerFactory : MonoBehaviour {
 
 	private void InstantiateNewTower(WayPoint baseWaypoint)
 	{
-		Instantiate(towerPrefab, baseWaypoint.transform.position, Quaternion.identity);
+		Instantiate(towerPrefab, baseWaypoint.transform.position, Quaternion.identity); // spawns new tower at where your mouse cursor is.
 		baseWaypoint.isAvailable = false;
 	}
 } // end of class

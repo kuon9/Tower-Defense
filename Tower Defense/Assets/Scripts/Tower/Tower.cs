@@ -9,7 +9,9 @@ public class Tower : MonoBehaviour {
 [SerializeField] Transform Unit; // Which tower will do targeting pretty much. 
 [SerializeField] float AttackRange = 10f;
 [SerializeField] ParticleSystem projectileParticle;  // reference 
- Transform targetEnemy; //you gonna put in the enemy in this slot so our towers look at them..\
+[SerializeField] Transform targetEnemy; //you gonna put in the enemy in this slot so our towers look at them..\
+
+//public WayPoint baseWaypoint;	// what the tower is standing on.
 
 	// Update is called once per frame
 void Update () 

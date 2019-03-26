@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33507784773950484}
   - component: {fileID: 23083945531967874}
   - component: {fileID: 95643036714700164}
-  - component: {fileID: 114051568747137820}
+  - component: {fileID: 114236690786937310}
   m_Layer: 0
   m_Name: Laser Tower Lvl 3
   m_TagString: Untagged
@@ -58,7 +58,6 @@ GameObject:
   - component: {fileID: 33875590531498254}
   - component: {fileID: 23781097038997538}
   - component: {fileID: 95409393828840934}
-  - component: {fileID: 114691824067376524}
   m_Layer: 0
   m_Name: LaserTower_TURRET_L03
   m_TagString: Untagged
@@ -87,12 +86,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1029082345513650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.04}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4187594985292332}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4975818564236254
 Transform:
   m_ObjectHideFlags: 1
@@ -100,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1234376159510558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.06, y: -0.5999999, z: -19.74}
+  m_LocalPosition: {x: 23.27, y: 5.05, z: 12.08}
   m_LocalScale: {x: 2.2537498, y: 2.2537498, z: 2.2537498}
   m_Children:
   - {fileID: 4187594985292332}
@@ -227,7 +226,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114051568747137820
+--- !u!114 &114236690786937310
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,20 +240,7 @@ MonoBehaviour:
   Unit: {fileID: 4187594985292332}
   AttackRange: 50
   projectileParticle: {fileID: 198527509373745356}
---- !u!114 &114691824067376524
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1673919882250594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8655bebb9427914b818e256e18ccb1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Unit: {fileID: 4187594985292332}
-  AttackRange: 50
-  projectileParticle: {fileID: 198527509373745356}
+  targetEnemy: {fileID: 0}
 --- !u!198 &198527509373745356
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3828,7 +3814,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minKillSpeed: 0
+    minKillSpeed: 1000
     maxKillSpeed: 10000
     radiusScale: 1
     collidesWith:
