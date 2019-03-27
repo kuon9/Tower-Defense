@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void StartGame()
 	{
-		SceneLoader.instance.LoadLevel ("SampleScene"); // same thing as scenemanager.loadscene(?);
+		SceneLoader.instance.LoadLevel("SampleScene"); // same thing as scenemanager.loadscene(?);
 	}
 	
 	public void Quit()
