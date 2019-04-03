@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour {
 		foreach (WayPoint waypoint in path) // Block becomes waypoint
 		{
 			transform.position = waypoint.transform.position;	
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(2f); // Taking 2 seconds to move from block to block.
 		}
 			print("Ending Patrol");
 	}

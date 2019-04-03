@@ -10,11 +10,6 @@ public class EnemyDamage : MonoBehaviour {
 	[SerializeField] ParticleSystem hitParticlePrefab;
 	[SerializeField] ParticleSystem DeathParticlePrefab;
 
-
-	// Use this for initialization
-	void Start () {
-
-	}
 /// OnParticleCollision is called when a particle hits a collider.
 /// </summary>
 /// <param name="other">The GameObject hit by the particle.</param>
@@ -39,6 +34,10 @@ public class EnemyDamage : MonoBehaviour {
 		{
 			var BlowUp = Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity); // makes the particle prefab appear on at the gameobject transform.position.
 			BlowUp.Play();
+			float DestroyDelay = BlowUp.main.duration; // the duration is in the particle system itself.
+
+			Destroy(BlowUp.gameObject, BlowUp.main.duration); // can't just put BlowUp. you gotta put gameobject because it's asking for one.
+			// destroy the particle after delay
 			Destroy(gameObject);
 		}
 } // end of class.

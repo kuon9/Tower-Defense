@@ -9,9 +9,9 @@ public class Tower : MonoBehaviour {
 [SerializeField] Transform Unit; // Which tower will do targeting pretty much. 
 [SerializeField] float AttackRange = 10f;
 [SerializeField] ParticleSystem projectileParticle;  // reference 
-[SerializeField] Transform targetEnemy; //you gonna put in the enemy in this slot so our towers look at them..\
+Transform targetEnemy; //you gonna put in the enemy in this slot so our towers look at them..\
 
-//public WayPoint baseWaypoint;	// what the tower is standing on.
+public WayPoint baseWaypoint;	// what the tower is standing on.
 
 	// Update is called once per frame
 void Update () 
@@ -57,7 +57,7 @@ private Transform GetClosest(Transform transformA, Transform transformB)
 private void FireAtEnemy()
 	{
 		float distanceToEnemy = Vector3.Distance(targetEnemy.transform.position, gameObject.transform.position);
-		if(distanceToEnemy <= AttackRange)
+		if(distanceToEnemy <= AttackRange) // if distance is less than or equal to attack range then we shoot or else it's false.
 		{
 			Shoot(true);
 		} 

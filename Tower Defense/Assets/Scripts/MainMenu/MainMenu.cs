@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-	public void OptionsMenu()
+
+	public void Options()
 	{
-		SceneManager.LoadScene(2); // same thing as sceneloader.instance.loadlevel("?") 
+		SceneManager.LoadScene(2);
 	}
 
 	public void StartGame()
 	{
 		SceneLoader.instance.LoadLevel("SampleScene"); // same thing as scenemanager.loadscene(?);
+		// SceneLoader only works with SceneLoader.instance.LoadLevel ("scene's name") but not SceneLoader.LoadScene(?);
 	}
 	
 	public void Quit()
