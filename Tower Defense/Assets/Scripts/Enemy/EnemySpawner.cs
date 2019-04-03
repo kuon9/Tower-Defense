@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour {
 
 	[Range(0.1f,120f)][SerializeField] float timeBetweenSpawn = 2f;
 	[SerializeField] EnemyMovement enemyPrefab;
 	[SerializeField] Transform enemyParentTransform;
- 
+	[SerializeField] Text spawnEnemies;
+	int score;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		StartCoroutine(SpawnEnemies());
+		spawnEnemies.text = score.ToString();
 	}
 	
 	IEnumerator SpawnEnemies()
@@ -22,5 +27,12 @@ public class EnemySpawner : MonoBehaviour {
 			yield return new WaitForSeconds (timeBetweenSpawn);
 		}
 	}
+
+	private void AddScore()
+	{
+		score++; // score++ means increase by 1
+		spawnEnemies.text = score.ToString();
+	}
+
 } // end of class
 
