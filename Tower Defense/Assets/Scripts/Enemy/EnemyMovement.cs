@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour {
 
 
+	[SerializeField] float movementPeriod = .5f;
+	[SerializeField] ParticleSystem boomParticle;
 
 	// Use this for initialization
 	void Start () 
@@ -21,14 +23,19 @@ public class EnemyMovement : MonoBehaviour {
 		foreach (WayPoint waypoint in path) // Block becomes waypoint
 		{
 			transform.position = waypoint.transform.position;	
-			yield return new WaitForSeconds(2f); // Taking 2 seconds to move from block to block.
+			yield return new WaitForSeconds(movementPeriod); // Taking 2 seconds to move from block to block.
 		}
-			print("Ending Patrol");
+			SelfDestruct(); // end of path.
 	}
 
-
-	// Update is called once per frame
-	void Update () {
-		
+	private void SelfDestruct()
+	{
+		var BlowUp = Instantiate(boomParticle, transform.position, Quaternion.identity); // makes the particle prefab appear on at the gameobject transform.position.
+		BlowUp.Play();
+		float DestroyDelay = BlowUp.main.duration; // the duration is in the particle system itself.
+		Destroy(BlowUp.gameObject, BlowUp.main.duration); // can't just put BlowUp. you gotta put gameobject because it's asking for one.
+		// destroy the particle after delay
+		Destroy(gameObject);
 	}
+
 }
