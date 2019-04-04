@@ -9,7 +9,17 @@ public class EnemyDamage : MonoBehaviour {
 	[SerializeField] int Health = 6; // can be float too.
 	[SerializeField] ParticleSystem hitParticlePrefab;
 	[SerializeField] ParticleSystem DeathParticlePrefab;
+	[SerializeField] AudioClip EnemyHitSFX;
+	[SerializeField] AudioClip EnemyDeathSFX;
 
+	AudioSource audioSource;
+
+
+
+private void Start()
+	{
+		audioSource = GetComponent<AudioSource>();
+	}
 /// OnParticleCollision is called when a particle hits a collider.
 /// </summary>
 /// <param name="other">The GameObject hit by the particle.</param>
@@ -28,16 +38,17 @@ public class EnemyDamage : MonoBehaviour {
 			Health = Health - 1;
 			print("current hitpoints are " + Health);
 			hitParticlePrefab.Play(); // this plays our particle system when process hit triggers.
-	
+			audioSource.PlayOneShot(EnemyHitSFX);
 		}
  	private void KillEnemy()
 		{
+		
 			var BlowUp = Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity); // makes the particle prefab appear on at the gameobject transform.position.
 			BlowUp.Play();
-			float DestroyDelay = BlowUp.main.duration; // the duration is in the particle system itself.
-
+			float DestroyDelay = BlowUp.main.duration; // the  "main.duration" is in the particle system itself.
 			Destroy(BlowUp.gameObject, BlowUp.main.duration); // can't just put BlowUp. you gotta put gameobject because it's asking for one.
 			// destroy the particle after delay
+			AudioSource.PlayClipAtPoint(EnemyDeathSFX, Camera.main.transform.position);
 			Destroy(gameObject);
 		}
 } // end of class.
