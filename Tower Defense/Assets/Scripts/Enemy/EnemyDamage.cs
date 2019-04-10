@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyDamage : MonoBehaviour {
 
@@ -11,14 +12,17 @@ public class EnemyDamage : MonoBehaviour {
 	[SerializeField] ParticleSystem DeathParticlePrefab;
 	[SerializeField] AudioClip EnemyHitSFX;
 	[SerializeField] AudioClip EnemyDeathSFX;
+	[SerializeField] Text KillingEnemy;
+	public int RobloxValue = 100;
+	private ScoreKeeper scoreKeeper;
 
 	AudioSource audioSource;
-
-
+	
 
 private void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
+		scoreKeeper = GameObject.Find("Score").GetComponent<ScoreKeeper>();
 	}
 /// OnParticleCollision is called when a particle hits a collider.
 /// </summary>
@@ -50,5 +54,11 @@ private void Start()
 			// destroy the particle after delay
 			AudioSource.PlayClipAtPoint(EnemyDeathSFX, Camera.main.transform.position);
 			Destroy(gameObject);
+			AddScore();
+		}
+
+		 void AddScore()
+		{
+			scoreKeeper.Score(RobloxValue);
 		}
 } // end of class.
