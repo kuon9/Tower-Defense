@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour {
 
+	private Transform Target;
 	
-	public Transform Target;
-	public float turretRange = 50f;
-
+	[Header("Attributes")]
+	[SerializeField] float turretRange = 50f;
+	[SerializeField] float turnSpeed = 10f;
+	[SerializeField] float fireRate = 1f;
+	[SerializeField] float DelaybetweenFire = 0f;
+	
+	[Header("Unity Setup Fields")]
 	public string enemyTag = "Enemy";
-	public Transform TurretPart;
-	public float turnSpeed = 10f;
+	
+	
+	[SerializeField] Transform TurretPart;
+	[SerializeField] ParticleSystem bulletPrefab;
+	[SerializeField] Transform firePoint;
+	
 	
 	// Use this for initialization
 	void Start () 
@@ -21,10 +30,9 @@ public class Turret : MonoBehaviour {
 
 	void UpdateTarget()
 	{
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag); // array of enemies. Attach enemy tag to the gameobjects
 		float shortestDistance = Mathf.Infinity; 
 		GameObject nearestEnemy = null;
-		
 		foreach(GameObject enemy in enemies)
 		{
 			float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);	
@@ -48,12 +56,32 @@ public class Turret : MonoBehaviour {
 		if(Target == null)
 		return;
 
+		
 		Vector3 dir = Target.position - transform.position; // dir = direction
 		Quaternion lookRotation = Quaternion.LookRotation(dir);
 		Vector3 rotation = Quaternion.Lerp(TurretPart.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles; // <--- eulerAngles = x, y,z.
 		TurretPart.rotation = Quaternion.Euler(0f,rotation.y,0f);
-	}	
+		// 4 line of codes above is our Target Lock-on.
 
+		if(DelaybetweenFire <= 0)
+		{
+			Shoot();
+			DelaybetweenFire = 1f/fireRate;
+		}
+			DelaybetweenFire -= Time.deltaTime; // means minus 1 after executing.
+			// above means DelayBetweenfire = DelayBetweenfire - Time.deltaTime;
+	}		
+
+
+	void Shoot()
+	{
+	ParticleSystem BulletYEET = (ParticleSystem) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+	Bullet bullet = BulletYEET.GetComponent<Bullet>();
+
+	if(bullet != null)
+	bullet.Seek(Target);
+
+	}
 
 	private void OnDrawGizmosSelected()
 	{
